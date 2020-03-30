@@ -36,9 +36,15 @@ public class MyActivity extends AppCompatActivity {
         // values/strings.xml.
         adView = findViewById(R.id.ad_view);
 
-        // Create an ad request. Check logcat output for the hashed device ID to
+        // Set your test devices. Check your logcat output for the hashed device ID to
         // get test ads on a physical device. e.g.
-        // "Use AdRequest.Builder.addTestDevice("ABCDEF012345") to get test ads on this device."
+        // "Use RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("ABCDEF012345"))
+        // to get test ads on this device."
+        MobileAds.setRequestConfiguration(
+            new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("ABCDEF012345"))
+                                              .build());
+
+        // Create an ad request.
         PublisherAdRequest adRequest = new PublisherAdRequest.Builder().build();
 
         // Start loading the ad in the background.
